@@ -1,4 +1,8 @@
+<div align="center">
+
 # learn-react-typescript
+
+Kurikulum interaktif dan panduan komprehensif belajar React modern + TypeScript untuk pemula dengan pendekatan Clean Code dan Type-Safe.
 
 [![React Version](https://img.shields.io/badge/React-19.2.8-61DAFB?style=flat-square&logo=react&logoColor=black)](https://react.dev/)
 [![TypeScript Version](https://img.shields.io/badge/TypeScript-6.0.2-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
@@ -6,6 +10,8 @@
 [![Linter](https://img.shields.io/badge/Linter-Oxlint_v1.79-FF7828?style=flat-square)](https://oxc.rs/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)](./LICENSE)
 [![Status: Complete](https://img.shields.io/badge/Curriculum-7%20Stages%20Complete-10B981?style=flat-square)]()
+
+</div>
 
 ---
 
@@ -19,7 +25,7 @@
 
 ## Deskripsi Singkat
 
-**learn-react-typescript** adalah repositori pembelajaran interaktif React modern dan TypeScript murni yang dibangun menggunakan Vite bundler. Repositori ini dirancang khusus untuk memandu pemula memahami konsep fundamental React dengan standar *Clean Code*, *Strict Type Safety*, dan penjelasan mendalam berbahasa Indonesia dari tahap pengenalan hingga pembuatan mini project aplikasi siap produksi. Proyek ini merupakan kelanjutan praktis langsung dari repositori fondasi [learn-typescript](https://github.com/ZakieMe/learn-typescript).
+**learn-react-typescript** adalah repositori pembelajaran interaktif React modern dan TypeScript murni yang dibangun menggunakan Vite bundler. Repositori ini dirancang khusus untuk memandu pemula memahami konsep fundamental React dengan standar *Clean Code*, *Strict Type Safety*, dan penjelasan mendalam berbahasa Indonesia dari tahap pengenalan hingga pembuatan mini project aplikasi siap produksi. Proyek ini merupakan kelanjutan praktis langsung dari repositori fondasi [learn-typescript](https://github.com/Jouqio/learn-typescript).
 
 ---
 
@@ -72,7 +78,7 @@ Ikuti langkah-langkah berikut untuk menjalankan repositori di lokal:
 
 1. **Clone repositori ini:**
    ```bash
-   git clone https://github.com/ZakieMe/learn-react-typescript.git
+   git clone https://github.com/Jouqio/learn-react-typescript.git
    ```
 
 2. **Masuk ke direktori proyek:**
@@ -281,7 +287,7 @@ Proyek ini telah dikonfigurasi dengan linter generasi baru **Oxlint** (`oxlint`)
 
 ## Related Repositories (Repositori Terkait)
 
-- **[learn-typescript](https://github.com/ZakieMe/learn-typescript)**: Repositori fondasi bahasa pemrograman TypeScript murni (sintaks dasar, interface, generics, utility types, dan object-oriented programming).
+- **[learn-typescript](https://github.com/Jouqio/learn-typescript)**: Repositori fondasi bahasa pemrograman TypeScript murni (sintaks dasar, interface, generics, utility types, dan object-oriented programming).
 - **[learn-nodejs]** *(Segera Hadir)*: Kelanjutan kurikulum backend server-side, RESTful API, dan arsitektur database.
 
 ---
