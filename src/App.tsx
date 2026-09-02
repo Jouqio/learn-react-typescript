@@ -7,20 +7,23 @@
  */
 
 import { useState } from 'react';
-import { 
-  Atom, 
-  ChevronLeft, 
-  ChevronRight, 
-  Compass, 
-  Boxes, 
-  Cpu, 
-  MousePointerClick, 
-  RefreshCw, 
-  Split, 
-  FolderKanban, 
+import {
+  Atom,
+  ChevronLeft,
+  ChevronRight,
+  Compass,
+  Boxes,
+  Cpu,
+  MousePointerClick,
+  RefreshCw,
+  Split,
+  FolderKanban,
   LayoutGrid,
-  CheckCircle2
+  CheckCircle2,
+  PlayCircle
 } from 'lucide-react';
+
+import { LatihanRunner } from './pembelajaran/LatihanRunner';
 
 // Tahap 1: Kenalan dengan React + TypeScript
 import { HelloWorld } from './pembelajaran/01-kenalan/HelloWorld';
@@ -74,13 +77,13 @@ function Modul1View() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
       {/* Sub-tab Switcher Latihan */}
-      <div style={{ 
-        display: 'flex', 
-        alignItems: 'center', 
-        gap: '0.5rem', 
-        background: 'var(--bg-surface)', 
-        padding: '0.4rem 0.6rem', 
-        borderRadius: 'var(--radius-md)', 
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: '0.5rem',
+        background: 'var(--bg-surface)',
+        padding: '0.4rem 0.6rem',
+        borderRadius: 'var(--radius-md)',
         border: '1px solid var(--border-subtle)',
         width: 'fit-content'
       }}>
@@ -144,13 +147,13 @@ function Modul2View() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
       {/* Sub-tab Switcher Latihan */}
-      <div style={{ 
-        display: 'flex', 
-        alignItems: 'center', 
-        gap: '0.5rem', 
-        background: 'var(--bg-surface)', 
-        padding: '0.4rem 0.6rem', 
-        borderRadius: 'var(--radius-md)', 
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: '0.5rem',
+        background: 'var(--bg-surface)',
+        padding: '0.4rem 0.6rem',
+        borderRadius: 'var(--radius-md)',
         border: '1px solid var(--border-subtle)',
         width: 'fit-content'
       }}>
@@ -214,13 +217,13 @@ function Modul3View() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
       {/* Sub-tab Switcher Latihan */}
-      <div style={{ 
-        display: 'flex', 
-        alignItems: 'center', 
-        gap: '0.5rem', 
-        background: 'var(--bg-surface)', 
-        padding: '0.4rem 0.6rem', 
-        borderRadius: 'var(--radius-md)', 
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: '0.5rem',
+        background: 'var(--bg-surface)',
+        padding: '0.4rem 0.6rem',
+        borderRadius: 'var(--radius-md)',
         border: '1px solid var(--border-subtle)',
         width: 'fit-content'
       }}>
@@ -284,13 +287,13 @@ function Modul4View() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
       {/* Sub-tab Switcher Latihan */}
-      <div style={{ 
-        display: 'flex', 
-        alignItems: 'center', 
-        gap: '0.5rem', 
-        background: 'var(--bg-surface)', 
-        padding: '0.4rem 0.6rem', 
-        borderRadius: 'var(--radius-md)', 
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: '0.5rem',
+        background: 'var(--bg-surface)',
+        padding: '0.4rem 0.6rem',
+        borderRadius: 'var(--radius-md)',
         border: '1px solid var(--border-subtle)',
         width: 'fit-content'
       }}>
@@ -354,13 +357,13 @@ function Modul5View() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
       {/* Sub-tab Switcher Latihan */}
-      <div style={{ 
-        display: 'flex', 
-        alignItems: 'center', 
-        gap: '0.5rem', 
-        background: 'var(--bg-surface)', 
-        padding: '0.4rem 0.6rem', 
-        borderRadius: 'var(--radius-md)', 
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: '0.5rem',
+        background: 'var(--bg-surface)',
+        padding: '0.4rem 0.6rem',
+        borderRadius: 'var(--radius-md)',
         border: '1px solid var(--border-subtle)',
         width: 'fit-content'
       }}>
@@ -424,13 +427,13 @@ function Modul6View() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
       {/* Sub-tab Switcher Latihan */}
-      <div style={{ 
-        display: 'flex', 
-        alignItems: 'center', 
-        gap: '0.5rem', 
-        background: 'var(--bg-surface)', 
-        padding: '0.4rem 0.6rem', 
-        borderRadius: 'var(--radius-md)', 
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: '0.5rem',
+        background: 'var(--bg-surface)',
+        padding: '0.4rem 0.6rem',
+        borderRadius: 'var(--radius-md)',
         border: '1px solid var(--border-subtle)',
         width: 'fit-content'
       }}>
@@ -494,13 +497,13 @@ function Modul7View() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
       {/* Sub-tab Switcher Latihan */}
-      <div style={{ 
-        display: 'flex', 
-        alignItems: 'center', 
-        gap: '0.5rem', 
-        background: 'var(--bg-surface)', 
-        padding: '0.4rem 0.6rem', 
-        borderRadius: 'var(--radius-md)', 
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: '0.5rem',
+        background: 'var(--bg-surface)',
+        padding: '0.4rem 0.6rem',
+        borderRadius: 'var(--radius-md)',
         border: '1px solid var(--border-subtle)',
         width: 'fit-content'
       }}>
@@ -628,7 +631,7 @@ export function App() {
           <span className="header-version">v19.2 • Strict Mode</span>
         </div>
 
-        <h1 className="app-title">Belajar React + TypeScript untuk Pemula</h1>
+        <h1 className="app-title">Belajar React + TypeScript</h1>
         <p className="app-subtitle">
           Dokumentasi dan materi interaktif dengan prinsip Clean Code, Strict Type Safety,
           dan arsitektur modular dari dasar hingga mini project produksi.
@@ -643,8 +646,8 @@ export function App() {
             <span>Pilih Modul Pembelajaran</span>
           </span>
           <span className="curriculum-progress-text">
-            {activeModuleId === 0 
-              ? "Semua Modul (7 Tahap)" 
+            {activeModuleId === 0
+              ? "Semua Modul (7 Tahap)"
               : `Modul ${activeModuleId} dari 7`}
           </span>
         </div>
@@ -668,14 +671,41 @@ export function App() {
             className={`all-modules-btn ${activeModuleId === 0 ? "active" : ""}`}
           >
             <LayoutGrid size={14} />
-            <span>Tampilkan Semua Modul (Roadmap Lengkap)</span>
+            <span>Tampilkan Semua Modul</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setActiveModuleId(99)}
+            className={`all-modules-btn ${activeModuleId === 99 ? "active" : ""}`}
+            style={{ 
+              borderColor: activeModuleId === 99 ? "var(--accent)" : undefined,
+              color: activeModuleId === 99 ? "var(--accent)" : undefined
+            }}
+          >
+            <PlayCircle size={14} />
+            <span>Latihan Runner (Pilih Soal 1-7)</span>
           </button>
         </div>
       </nav>
 
       {/* Konten Utama */}
       <main className="app-main">
-        {activeModuleId === 0 ? (
+        {activeModuleId === 99 ? (
+          // Tampilkan Runner Latihan Khusus
+          <div className="module-section">
+            <div className="module-header-banner">
+              <span className="module-header-tag">
+                <PlayCircle size={14} />
+                <span>Mode Latihan Runner</span>
+              </span>
+              <span className="curriculum-progress-text">
+                Pilih & Uji Latihan 01 s.d. 07
+              </span>
+            </div>
+            <LatihanRunner />
+          </div>
+        ) : activeModuleId === 0 ? (
           // Tampilkan Seluruh Modul Berurutan
           modules.map((mod) => (
             <div key={mod.id} className="module-section">
