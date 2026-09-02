@@ -128,6 +128,7 @@ src/
 ├── index.css                         # Design tokens, CSS variables, & baseline resets
 ├── main.tsx                          # Entry point aplikasi (createRoot React DOM)
 └── pembelajaran/                     # Modul Materi Kurikulum Terstruktur
+    ├── LatihanRunner.tsx             # Interactive runner untuk memilih & menguji seluruh latihan (1-7)
     ├── common/
     │   └── CodeComparison.tsx        # Komponen komparasi visual "Anti-Pattern vs Best Practice"
     ├── 01-kenalan/                   # TAHAP 1: Dasar React & Vite
@@ -256,7 +257,7 @@ Berikut adalah seluruh daftar capaian materi dan checklist kurikulum yang telah 
 Antarmuka kurikulum ini dirancang secara sengaja (*Intentional Design*) mengikuti standar dokumentasi teknis modern (seperti *Linear*, *Vercel Docs*, dan *Stripe Docs*), dengan menghilangkan seluruh ciri *AI Slop*:
 
 - **Satu Palet Warna Terukur**: Menggunakan basis Slate/Zinc Dark Theme (`#090a0f`, `#11131a`, `#1e202c`) dengan **Satu Warna Aksen Tunggal: Electric Azure (`#3b82f6`)** untuk elemen aktif dan navigasi. Bebas dari gradient ungu-biru yang berlebihan.
-- **Ikonografi Konsisten**: Tidak menggunakan emoji teks (`🚀`, `💡`, `🔥`, `🗑️`) sebagai pengganti icon. Seluruh ikon menggunakan pustaka murni [`lucide-react`](https://lucide.dev/) dengan stroke dan proporsi seimbang.
+- **Ikonografi Konsisten**: Tidak menggunakan emoji teks sebagai pengganti icon. Seluruh ikon menggunakan pustaka murni [`lucide-react`](https://lucide.dev/) dengan stroke dan proporsi seimbang.
 - **Pola Visual "Anti-Pattern vs Best Practice"**: Menampilkan blok komparasi kode dua kolom yang elegan dengan border kiri tipis (merah lembut untuk anti-pattern, hijau lembut untuk best practice) tanpa latar belakang warna terang yang menyilaukan mata.
 - **Hierarki & Ergonomi Membaca**: Dilengkapi dengan *Interactive Curriculum Stepper* sehingga materi yang sedang dipelajari tampil menonjol dan fokus, lengkap dengan tombol navigasi *Sebelumnya / Selanjutnya* dan opsi tinjauan seluruh roadmap.
 - **Animasi CSS Murni**: Animasi mikro seperti spinner loading didefinisikan secara manual via `@keyframes spin` di `index.css` tanpa ketergantungan pada library utilitas eksternal.
