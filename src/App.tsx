@@ -18,11 +18,17 @@ import {
   RefreshCw,
   Split,
   FolderKanban,
-  LayoutGrid,
   CheckCircle2,
-  PlayCircle
+  BookOpen,
+  Code2,
+  Terminal,
+  FileCheck
 } from 'lucide-react';
 
+// Komponen Layout Dashboard Baru
+import { Sidebar, type SidebarTab } from './components/Sidebar';
+import { DashboardHeader } from './components/DashboardHeader';
+import { ModuleSelector } from './components/ModuleSelector';
 import { LatihanRunner } from './pembelajaran/LatihanRunner';
 
 // Tahap 1: Kenalan dengan React + TypeScript
@@ -562,6 +568,7 @@ interface ModuleConfig {
 }
 
 export function App() {
+  const [activeTab, setActiveTab] = useState<SidebarTab>('materi');
   // State navigasi modul aktif (1 s.d. 7, atau 0 untuk 'Tampilkan Semua')
   const [activeModuleId, setActiveModuleId] = useState<number>(1);
 
@@ -617,160 +624,232 @@ export function App() {
     },
   ];
 
+  const handleSelectModule = (id: number) => {
+    setActiveModuleId(id);
+    setActiveTab('materi');
+  };
+
+  const handleSelectTab = (tab: SidebarTab) => {
+    setActiveTab(tab);
+  };
+
   const currentModule = modules.find((m) => m.id === activeModuleId);
 
   return (
-    <div className="app-container">
-      {/* Header Utama Dokumentasi */}
-      <header className="app-header">
-        <div className="header-meta-row">
-          <div className="header-brand-badge">
-            <Atom size={15} />
-            <span>Kurikulum React + TS</span>
-          </div>
-          <span className="header-version">v19.2 • Strict Mode</span>
-        </div>
+    <div className="dashboard-layout">
+      {/* 1. Sidebar Navigasi Icon-Only */}
+      <Sidebar activeTab={activeTab} onSelectTab={handleSelectTab} />
 
-        <h1 className="app-title">Belajar React + TypeScript</h1>
-        <p className="app-subtitle">
-          Dokumentasi dan materi interaktif dengan prinsip Clean Code, Strict Type Safety,
-          dan arsitektur modular dari dasar hingga mini project produksi.
-        </p>
-      </header>
+      {/* 2. Main Content Area */}
+      <div className="dashboard-main-wrapper">
+        <main className="dashboard-main">
+          {/* a. Header Hero Section */}
+          <DashboardHeader />
 
-      {/* Curriculum Module Switcher */}
-      <nav className="curriculum-nav-wrapper" aria-label="Navigasi Kurikulum">
-        <div className="curriculum-nav-header">
-          <span className="curriculum-nav-title">
-            <CheckCircle2 size={16} style={{ color: "var(--accent)" }} />
-            <span>Pilih Modul Pembelajaran</span>
-          </span>
-          <span className="curriculum-progress-text">
-            {activeModuleId === 0
-              ? "Semua Modul (7 Tahap)"
-              : `Modul ${activeModuleId} dari 7`}
-          </span>
-        </div>
-
-        <div className="module-nav-grid">
-          {modules.map((m) => (
-            <button
-              key={m.id}
-              type="button"
-              onClick={() => setActiveModuleId(m.id)}
-              className={`module-nav-btn ${activeModuleId === m.id ? "active" : ""}`}
-            >
-              <span className="module-nav-step">{m.step}</span>
-              <span className="module-nav-name">{m.title}</span>
-            </button>
-          ))}
-
-          <button
-            type="button"
-            onClick={() => setActiveModuleId(0)}
-            className={`all-modules-btn ${activeModuleId === 0 ? "active" : ""}`}
-          >
-            <LayoutGrid size={14} />
-            <span>Tampilkan Semua Modul</span>
-          </button>
-
-          <button
-            type="button"
-            onClick={() => setActiveModuleId(99)}
-            className={`all-modules-btn ${activeModuleId === 99 ? "active" : ""}`}
-            style={{ 
-              borderColor: activeModuleId === 99 ? "var(--accent)" : undefined,
-              color: activeModuleId === 99 ? "var(--accent)" : undefined
-            }}
-          >
-            <PlayCircle size={14} />
-            <span>Latihan Runner (Pilih Soal 1-7)</span>
-          </button>
-        </div>
-      </nav>
-
-      {/* Konten Utama */}
-      <main className="app-main">
-        {activeModuleId === 99 ? (
-          // Tampilkan Runner Latihan Khusus
-          <div className="module-section">
-            <div className="module-header-banner">
-              <span className="module-header-tag">
-                <PlayCircle size={14} />
-                <span>Mode Latihan Runner</span>
-              </span>
-              <span className="curriculum-progress-text">
-                Pilih & Uji Latihan 01 s.d. 07
-              </span>
-            </div>
-            <LatihanRunner />
-          </div>
-        ) : activeModuleId === 0 ? (
-          // Tampilkan Seluruh Modul Berurutan
-          modules.map((mod) => (
-            <div key={mod.id} className="module-section">
-              <div className="module-header-banner">
-                <span className="module-header-tag">
-                  {mod.icon}
-                  <span>{mod.step}: {mod.title}</span>
-                </span>
-              </div>
-              {mod.content}
-            </div>
-          ))
-        ) : (
-          // Tampilkan Modul Aktif Terfokus (Fokus & Ergonomis)
-          currentModule && (
+          {/* Konten Berdasarkan Tab Navigasi Sidebar */}
+          {activeTab === 'runner' ? (
             <div className="module-section">
               <div className="module-header-banner">
                 <span className="module-header-tag">
-                  {currentModule.icon}
-                  <span>{currentModule.step}: {currentModule.title}</span>
+                  <Code2 size={16} />
+                  <span>Pusat Uji Coba Latihan (Interactive Runner)</span>
                 </span>
                 <span className="curriculum-progress-text">
-                  Tahap {currentModule.id} / 7
+                  Latihan 01 s.d. 07
                 </span>
               </div>
-
-              {currentModule.content}
-
-              {/* Bottom Stepper Navigation */}
-              <div className="module-bottom-nav">
-                <button
-                  type="button"
-                  onClick={() => setActiveModuleId((prev) => Math.max(1, prev - 1))}
-                  disabled={currentModule.id === 1}
-                  className="btn-nav-module"
-                >
-                  <ChevronLeft size={16} />
-                  <span>Modul Sebelumnya</span>
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => setActiveModuleId((prev) => Math.min(7, prev + 1))}
-                  disabled={currentModule.id === 7}
-                  className="btn-nav-module"
-                >
-                  <span>Modul Selanjutnya</span>
-                  <ChevronRight size={16} />
-                </button>
+              <LatihanRunner />
+            </div>
+          ) : activeTab === 'docs' ? (
+            <div className="module-section">
+              <div className="module-header-banner">
+                <span className="module-header-tag">
+                  <BookOpen size={16} />
+                  <span>Panduan & Standar Kode Proyek</span>
+                </span>
+              </div>
+              <div className="learning-card">
+                <h3 className="card-title">Standar Kualitas & Arsitektur Proyek</h3>
+                <p className="card-subtitle">
+                  Repositori ini menerapkan standar rekayasa frontend modern berpedoman Clean Architecture:
+                </p>
+                <ul style={{ paddingLeft: '1.25rem', marginTop: '1rem', color: 'var(--text-secondary)', lineHeight: '1.8' }}>
+                  <li><strong style={{ color: 'var(--text-heading)' }}>Strict Type Safety:</strong> Validasi ketat kontrak interface TypeScript tanpa tipe <code>any</code>.</li>
+                  <li><strong style={{ color: 'var(--text-heading)' }}>Single Responsibility Principle:</strong> Pemisahan komponen form, row, list, dan business logic.</li>
+                  <li><strong style={{ color: 'var(--text-heading)' }}>Immutable State Updates:</strong> Mutasi data state selalu menggunakan operasi array murni (spread, filter, map).</li>
+                  <li><strong style={{ color: 'var(--text-heading)' }}>Modern Linter & Bundler:</strong> Ditenagai oleh Vite 8 dan engine Oxlint v1.79.</li>
+                </ul>
               </div>
             </div>
-          )
-        )}
-      </main>
+          ) : activeTab === 'files' ? (
+            <div className="module-section">
+              <div className="module-header-banner">
+                <span className="module-header-tag">
+                  <FolderKanban size={16} />
+                  <span>Struktur Modul & Folder Proyek</span>
+                </span>
+              </div>
+              <div className="learning-card">
+                <h3 className="card-title">Arsitektur Direktori Kurikulum</h3>
+                <p className="card-subtitle">Struktur modular yang terisolasi di dalam folder <code>src/pembelajaran/</code>:</p>
+                <pre className="code-block" style={{ marginTop: '1rem' }}>
+{`src/
+├── components/          # Komponen Layout Dashboard (Sidebar, Header, ModuleSelector)
+├── pembelajaran/        # 7 Tahap Kurikulum Terstruktur
+│   ├── 01-kenalan/      # Component dasar, JSX rules, & Fragment
+│   ├── 02-props/        # Interface typing, destructuring, & default values
+│   ├── 03-state/        # useState memory, reactivity, & updater function
+│   ├── 04-events/       # SyntheticEvent, controlled form, & validasi
+│   ├── 05-effects/      # useEffect, side effects, & REST API fetching
+│   ├── 06-rendering/    # Conditional ternary & immutable list .map()
+│   ├── 07-mini-project/ # Mini project TaskFlow (Todo List App Lengkap)
+│   └── LatihanRunner.tsx # Runner interaktif pengujian latihan mandiri
+├── App.css              # Technical stylesheet dashboard
+└── index.css            # Desain token & CSS variables`}
+                </pre>
+              </div>
+            </div>
+          ) : activeTab === 'progress' ? (
+            <div className="module-section">
+              <div className="module-header-banner">
+                <span className="module-header-tag">
+                  <FileCheck size={16} />
+                  <span>Status Kurikulum Pembelajaran</span>
+                </span>
+                <span className="curriculum-progress-text">7 dari 7 Tahap Tersedia</span>
+              </div>
+              <div className="learning-card">
+                <h3 className="card-title">Capaian Materi Belajar</h3>
+                <div style={{ display: 'grid', gap: '0.75rem', marginTop: '1rem' }}>
+                  {modules.map((m) => (
+                    <div key={m.id} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0.75rem 1rem', background: 'var(--bg-canvas)', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-subtle)' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                        <CheckCircle2 size={16} style={{ color: 'var(--accent)' }} />
+                        <span style={{ fontWeight: 600, color: 'var(--text-heading)' }}>{m.step}: {m.title}</span>
+                      </div>
+                      <button 
+                        type="button" 
+                        onClick={() => handleSelectModule(m.id)}
+                        className="btn-filter"
+                        style={{ fontSize: '0.8rem', padding: '0.35rem 0.75rem' }}
+                      >
+                        Buka Tahap Ini
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ) : activeTab === 'settings' ? (
+            <div className="module-section">
+              <div className="module-header-banner">
+                <span className="module-header-tag">
+                  <Terminal size={16} />
+                  <span>Informasi Lingkungan (Environment)</span>
+                </span>
+              </div>
+              <div className="learning-card">
+                <h3 className="card-title">Spesifikasi Teknologi & Konfigurasi</h3>
+                <div style={{ display: 'grid', gap: '0.75rem', marginTop: '1rem' }}>
+                  <div style={{ padding: '0.75rem 1rem', background: 'var(--bg-canvas)', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-subtle)', display: 'flex', justifyContent: 'space-between' }}>
+                    <span style={{ color: 'var(--text-secondary)' }}>React Core Engine</span>
+                    <code style={{ color: 'var(--accent)' }}>v19.2.8 (Strict Mode Enabled)</code>
+                  </div>
+                  <div style={{ padding: '0.75rem 1rem', background: 'var(--bg-canvas)', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-subtle)', display: 'flex', justifyContent: 'space-between' }}>
+                    <span style={{ color: 'var(--text-secondary)' }}>TypeScript Version</span>
+                    <code style={{ color: 'var(--accent)' }}>~6.0.2 (Static Type Contract)</code>
+                  </div>
+                  <div style={{ padding: '0.75rem 1rem', background: 'var(--bg-canvas)', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-subtle)', display: 'flex', justifyContent: 'space-between' }}>
+                    <span style={{ color: 'var(--text-secondary)' }}>Frontend Bundler</span>
+                    <code style={{ color: 'var(--accent)' }}>Vite 8.2.2 + Oxc Plugin</code>
+                  </div>
+                  <div style={{ padding: '0.75rem 1rem', background: 'var(--bg-canvas)', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-subtle)', display: 'flex', justifyContent: 'space-between' }}>
+                    <span style={{ color: 'var(--text-secondary)' }}>Static Code Analysis</span>
+                    <code style={{ color: 'var(--accent)' }}>Oxlint v1.79.0 (0 Errors)</code>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ) : (
+            /* Tampilan Utama Materi (Home & Materi) */
+            <>
+              {/* b. Module Selector Card */}
+              <ModuleSelector
+                modules={modules}
+                activeModuleId={activeModuleId}
+                onSelectModule={handleSelectModule}
+              />
 
-      {/* Footer Bersih & Profesional */}
-      <footer className="app-footer">
-        <div className="app-footer-left">
-          <Atom size={16} style={{ color: "var(--accent)" }} />
-          <span>React + TypeScript Learning Curriculum</span>
-        </div>
-        <div className="app-footer-right">
-          <span>Clean Architecture • Zero AI Slop</span>
-        </div>
-      </footer>
+              {/* c. Konten Pembelajaran */}
+              {activeModuleId === 0 ? (
+                // Tampilkan Seluruh Modul Berurutan
+                modules.map((mod) => (
+                  <div key={mod.id} className="module-section">
+                    <div className="module-header-banner">
+                      <span className="module-header-tag">
+                        {mod.icon}
+                        <span>{mod.step}: {mod.title}</span>
+                      </span>
+                    </div>
+                    {mod.content}
+                  </div>
+                ))
+              ) : (
+                // Tampilkan Modul Aktif Terfokus
+                currentModule && (
+                  <div className="module-section">
+                    <div className="module-header-banner">
+                      <span className="module-header-tag">
+                        {currentModule.icon}
+                        <span>{currentModule.step}: {currentModule.title}</span>
+                      </span>
+                      <span className="curriculum-progress-text">
+                        Tahap {currentModule.id} / 7
+                      </span>
+                    </div>
+
+                    {currentModule.content}
+
+                    {/* Bottom Stepper Navigation */}
+                    <div className="module-bottom-nav">
+                      <button
+                        type="button"
+                        onClick={() => setActiveModuleId((prev) => Math.max(1, prev - 1))}
+                        disabled={currentModule.id === 1}
+                        className="btn-nav-module"
+                      >
+                        <ChevronLeft size={16} />
+                        <span>Modul Sebelumnya</span>
+                      </button>
+
+                      <button
+                        type="button"
+                        onClick={() => setActiveModuleId((prev) => Math.min(7, prev + 1))}
+                        disabled={currentModule.id === 7}
+                        className="btn-nav-module"
+                      >
+                        <span>Modul Selanjutnya</span>
+                        <ChevronRight size={16} />
+                      </button>
+                    </div>
+                  </div>
+                )
+              )}
+            </>
+          )}
+        </main>
+
+        {/* Footer Bersih & Profesional */}
+        <footer className="app-footer">
+          <div className="app-footer-left">
+            <Atom size={16} style={{ color: "var(--accent)" }} />
+            <span>React + TypeScript Learning Curriculum</span>
+          </div>
+          <div className="app-footer-right">
+            <span>Clean Architecture • Zero AI Slop</span>
+          </div>
+        </footer>
+      </div>
     </div>
   );
 }
