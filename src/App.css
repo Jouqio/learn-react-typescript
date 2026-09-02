@@ -1,22 +1,150 @@
 /* ============================================================================
  * STYLING KURIKULUM PEMBELAJARAN REACT + TYPESCRIPT
- * Desain Intentional: Modern Technical Documentation (Linear / Vercel / Stripe)
+ * Desain Intentional: Modern Technical Documentation & Dashboard
+ * Style Reference: Linear / Vercel / Stripe
  * ============================================================================ */
 
-/* Layout Utama */
-.app-container {
+/* Dashboard Container (Sidebar + Main Content) */
+.dashboard-layout {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--bg-canvas);
+  color: var(--text-body);
+}
+
+/* Sidebar Navigasi Icon-Only */
+.dashboard-sidebar {
+  width: var(--sidebar-width);
+  min-width: var(--sidebar-width);
+  background: var(--sidebar-bg);
+  border-right: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem 0.5rem;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  box-sizing: border-box;
+  z-index: 50;
+}
+
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin-bottom: 2rem;
+  color: var(--accent);
+}
+
+.sidebar-logo-icon {
+  filter: drop-shadow(0 0 12px rgba(59, 130, 246, 0.45));
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+  flex: 1;
   width: 100%;
-  max-width: 960px;
+}
+
+.sidebar-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-top: auto;
+}
+
+.sidebar-icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sidebar-icon-btn:hover {
+  color: var(--text-heading);
+  background: var(--bg-surface-hover);
+  border-color: var(--border-subtle);
+}
+
+.sidebar-icon-btn.active {
+  color: var(--accent);
+  background: var(--accent-subtle);
+  border-color: var(--accent);
+  box-shadow: 0 0 14px rgba(59, 130, 246, 0.25);
+}
+
+/* Dashboard Main Content Wrapper */
+.dashboard-main-wrapper {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.dashboard-main {
+  flex: 1;
+  width: 100%;
+  max-width: 1080px;
   margin: 0 auto;
-  padding: 2.5rem 1.5rem 4rem 1.5rem;
+  padding: 2.5rem 2.5rem 4rem 2.5rem;
   box-sizing: border-box;
 }
 
-/* Header Dokumentasi */
-.app-header {
-  margin-bottom: 2rem;
-  padding-bottom: 2rem;
+/* Header Hero Section */
+.dashboard-hero {
+  position: relative;
+  border-radius: var(--radius-lg);
+  background: radial-gradient(circle at 85% 40%, rgba(59, 130, 246, 0.09) 0%, rgba(17, 19, 26, 0.5) 60%, rgba(9, 10, 15, 0) 100%), var(--bg-canvas);
   border-bottom: 1px solid var(--border-subtle);
+  padding: 1.5rem 1rem 2rem 0;
+  margin-bottom: 2.25rem;
+  overflow: hidden;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 760px;
+}
+
+.hero-watermark-wrapper {
+  position: absolute;
+  right: -30px;
+  top: -45px;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.13;
+  color: var(--accent);
+}
+
+.header-watermark-icon {
+  transform: rotate(18deg);
+  filter: drop-shadow(0 0 40px rgba(59, 130, 246, 0.5));
+}
+
+.module-selector-footer {
+  margin-top: 1.25rem;
+  display: flex;
+  justify-content: center;
+}
+
+.nav-title-icon {
+  color: var(--accent);
 }
 
 .header-meta-row {

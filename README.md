@@ -19,7 +19,7 @@ Kurikulum interaktif dan panduan komprehensif belajar React modern + TypeScript 
 
 ![Preview](./docs/screenshot.png)
 
-> *Placeholder: Tangkapan layar antarmuka aplikasi dokumentasi pembelajaran interaktif.*
+> *Tampilan antarmuka Dashboard Interaktif Kurikulum Pembelajaran React + TypeScript.*
 
 ---
 
