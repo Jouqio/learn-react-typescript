@@ -32,6 +32,7 @@
 - [Instalasi & Setup](#instalasi--setup)
 - [Available Scripts (Perintah yang Tersedia)](#available-scripts-perintah-yang-tersedia)
 - [Struktur Folder](#struktur-folder)
+- [Cara Mengerjakan Latihan](#cara-mengerjakan-latihan)
 - [Progress / Roadmap Belajar](#progress--roadmap-belajar)
 - [Design System & UI Intentional](#design-system--ui-intentional)
 - [Konfigurasi Oxlint & Bundler](#konfigurasi-oxlint--bundler)
@@ -125,29 +126,74 @@ src/
     │   └── CodeComparison.tsx        # Komponen komparasi visual "Anti-Pattern vs Best Practice"
     ├── 01-kenalan/                   # TAHAP 1: Dasar React & Vite
     │   ├── HelloWorld.tsx            # Pengenalan JSX/TSX, Function Component, & Fragment
-    │   └── StrukturProjectExplainer.tsx # Diagram alur rendering & panduan struktur file
+    │   ├── StrukturProjectExplainer.tsx # Diagram alur rendering & panduan struktur file
+    │   └── latihan/                  # Latihan Mandiri & Kunci Jawaban
+    │       ├── latihan-01.tsx        # Soal latihan (komponen dengan TODO terstruktur)
+    │       └── jawaban-01.tsx        # Kunci jawaban resmi lengkap + alasan arsitektur
     ├── 02-props/                     # TAHAP 2: Props & Typing Interface
     │   ├── PropsExplainer.tsx        # Konsep aliran data satu arah & typing interface
-    │   └── UserCard.tsx              # Praktik komponen profil reusable dengan static typing
+    │   ├── UserCard.tsx              # Praktik komponen profil reusable dengan static typing
+    │   └── latihan/                  # Latihan Mandiri & Kunci Jawaban
+    │       ├── latihan-02.tsx        # Soal latihan (Props, interface, optional ?, default value)
+    │       └── jawaban-02.tsx        # Kunci jawaban resmi lengkap + alasan arsitektur
     ├── 03-state/                     # TAHAP 3: useState & Reaktivitas
     │   ├── StateExplainer.tsx        # Perbedaan Props vs State & bahaya mutasi langsung
-    │   └── Counter.tsx               # Praktik komponen interaktif dengan updater function
+    │   ├── Counter.tsx               # Praktik komponen interaktif dengan updater function
+    │   └── latihan/                  # Latihan Mandiri & Kunci Jawaban
+    │       ├── latihan-03.tsx        # Soal latihan (Multiple state, updater function, toggle)
+    │       └── jawaban-03.tsx        # Kunci jawaban resmi lengkap + alasan arsitektur
     ├── 04-events/                    # TAHAP 4: Event Handling & Form
     │   ├── EventExplainer.tsx        # SyntheticEvent, typing e: React.MouseEvent / FormEvent
-    │   └── SimpleNameForm.tsx        # Controlled form, real-time input, validasi, & e.preventDefault()
+    │   ├── SimpleNameForm.tsx        # Controlled form, real-time input, validasi, & e.preventDefault()
+    │   └── latihan/                  # Latihan Mandiri & Kunci Jawaban
+    │       ├── latihan-04.tsx        # Soal latihan (onChange, onSubmit, e.preventDefault, validasi)
+    │       └── jawaban-04.tsx        # Kunci jawaban resmi lengkap + alasan arsitektur
     ├── 05-effects/                   # TAHAP 5: useEffect & HTTP Fetching
     │   ├── EffectExplainer.tsx       # Side effects, siklus hidup mount/update, & 3 dependency array
-    │   └── PostListFetcher.tsx       # Praktik konsumsi REST API publik, status loading & error
+    │   ├── PostListFetcher.tsx       # Praktik konsumsi REST API publik, status loading & error
+    │   └── latihan/                  # Latihan Mandiri & Kunci Jawaban
+    │       ├── latihan-05.tsx        # Soal latihan (useEffect, fetch API, loading & error state)
+    │       └── jawaban-05.tsx        # Kunci jawaban resmi lengkap + alasan arsitektur
     ├── 06-rendering/                 # TAHAP 6: Conditional & List Rendering
     │   ├── RenderingExplainer.tsx    # Operator ternary, logical AND, gotcha angka 0, & aturan prop key
-    │   └── SimpleTodoList.tsx        # Looping array dengan .map(), filter agenda, & immutable updates
+    │   ├── SimpleTodoList.tsx        # Looping array dengan .map(), filter agenda, & immutable updates
+    │   └── latihan/                  # Latihan Mandiri & Kunci Jawaban
+    │       ├── latihan-06.tsx        # Soal latihan (.map, unique key id, empty state, filter)
+    │       └── jawaban-06.tsx        # Kunci jawaban resmi lengkap + alasan arsitektur
     └── 07-mini-project/              # TAHAP 7: Mini Project Akhir (TaskFlow App)
         ├── TodoListApp.tsx           # Container utama pengelola state daftar tugas terpusat
         ├── TodoForm.tsx              # Komponen form input tugas & validasi mandiri
         ├── TodoItemRow.tsx           # Baris item tugas, checkbox toggle, & tombol hapus
         ├── TodoFilterBar.tsx         # Bilah navigasi filter status & pembersih tugas selesai
-        └── types.ts                  # Kontrak tipe data terpusat (TaskItem, TaskPriority, TaskFilter)
+        ├── types.ts                  # Kontrak tipe data terpusat (TaskItem, TaskPriority, TaskFilter)
+        └── latihan/                  # Latihan Mandiri & Kunci Jawaban
+            ├── latihan-07.tsx        # Soal mini project 2 (Catatan Belanja / Shopping List)
+            └── jawaban-07.tsx        # Kunci jawaban resmi lengkap + ulasan arsitektur
 ```
+
+---
+
+## Cara Mengerjakan Latihan
+
+Setiap tahap materi dilengkapi dengan subfolder `latihan/` yang berisi pasangan file: **`latihan-XX.tsx`** (soal untuk Anda kerjakan sendiri) dan **`jawaban-XX.tsx`** (kunci jawaban resmi berstandar Clean Code).
+
+Berikut alur belajar yang direkomendasikan:
+
+1. **Pahami Materi Teori**: Buka tahap modul yang sedang dipelajari di aplikasi lokal (`http://localhost:5173`) atau baca kode penjelasan di dalam folder tahap tersebut (misal `01-kenalan/`).
+2. **Buka File Soal**: Masuk ke subfolder `latihan/` dan buka file soal, contoh:
+   ```
+   src/pembelajaran/01-kenalan/latihan/latihan-01.tsx
+   ```
+3. **Isi Komentar `// TODO:`**: 
+   - Seluruh file latihan sudah valid secara TypeScript dan dapat langsung dijalankan tanpa error di browser (lewat tab **"Soal Latihan"** di header modul).
+   - Baca instruksi di setiap baris `// TODO:`, lalu ganti nilai *placeholder* sementara dengan kode Anda sendiri.
+4. **Cek Hasil di Browser**: Buka peramban di `http://localhost:5173` pada tab latihan terkait untuk melihat pembaruan tampilan antarmuka secara *live*.
+5. **Bandingkan dengan Kunci Jawaban**:
+   - Jika sudah selesai, atau jika Anda mengalami kebuntuan (*stuck*), buka file:
+     ```
+     src/pembelajaran/01-kenalan/latihan/jawaban-01.tsx
+     ```
+   - Pelajari **alasan di balik penulisan kode** pada komentar penjelasan dan perhatikan bagian **"Kesalahan Umum Pemula"** di akhir file untuk menghindari kebiasaan buruk (*anti-pattern*).
 
 ---
 
